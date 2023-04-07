@@ -1,0 +1,251 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<aiml>
+     <category>
+        <pattern>*</pattern>
+        <template>I have no answer for that.</template>
+    </category>
+    <category>
+        <pattern>HELLO</pattern>
+        <template>
+            <random>
+              <li>Hi</li>
+              <li>Howdy</li>
+              <li>What's Good?</li>
+              <li>Hello. What is your name?</li>
+            </random>
+        </template>
+    </category>
+    <category>
+        <pattern>Hi</pattern>
+        <template><srai>HELLO</srai></template>
+    </category>
+    <category>
+        <pattern>Howdy</pattern>
+        <template><srai>HELLO</srai></template>
+    </category>
+    <category>
+        <pattern>^ My NAME IS *</pattern>
+        <template>
+            <srai>HELLO</srai> 
+            <set name ="firstname"> <star index="2"/> it is nice to meet you.</set>
+        </template>
+    </category>
+    <category>
+        <pattern>WHAT IS MY NAME</pattern>
+        <template>
+        <condition name="firstname">
+            <li value="unknown"> No idea, you haven't told me it.</li>
+            <li>Your name is <get name="firstname"/>.</li>
+        </condition>
+        </template>
+    </category>
+    <category>
+	    <pattern>WHAT IS YOUR FAVORITE *</pattern>
+	    <template>
+	        <think><set name="topic"><star/></set></think>
+	        <think><set name="tp"><star/></set></think>
+            <condition name="tp">
+                <li value = "ANIME">My Favorite Anime is One Piece!</li>
+                <li value = "MOVIE">Spirited Away.</li>
+                <li value = "GAME">Final Fantasy 13.</li>
+                <li> I have no favorite <star/></li>
+            </condition>
+	     </template>
+    </category>
+    <topic name="ANIME">
+     <category>
+        <pattern>^ about</pattern>
+        <template>
+            A guy named Monkey D Luffy who is determined to become king of the pirates with his pirate crew!
+        </template>
+    </category>
+     <category>
+        <pattern>^ favorite character</pattern>
+        <template>
+            Zoro!
+        </template>
+    </category>
+    <category>
+      <that>Zoro ^</that>
+      <pattern>_</pattern>
+      <template>
+          He's super strong and using swords is badass.
+      </template>
+    </category>
+    <category>
+      <that>^ swords ^</that>
+      <pattern>_</pattern>
+      <template>
+          <image>https://media.giphy.com/media/4OV1bLOIWwIXRxpXlN/giphy.gif</image>
+      </template>
+    </category>
+    <category>
+        <pattern>Why ^</pattern>
+        <template>
+            If you've seen it you would't be asking that. It has over 1000 episodes for a reason!!! 
+        </template>
+    </category>
+    <category>
+        <pattern>^ least favorite character</pattern>
+        <template>
+            Blackbeard because he *Spoiler* got my second favorite character killed!
+        </template>
+    </category>
+    <category>
+      <that>Blackbeard ^</that>
+      <pattern>_</pattern>
+      <template>
+          Because he *Spoiler Alert* got my second favorite character killed!
+          Also he's kinda ugly.
+      </template>
+    </category>
+    <category>
+      <that>^ ugly</that>
+      <pattern>_</pattern>
+      <template>
+          <image>https://media.giphy.com/media/UfR30gxLc5mxoJClnl/giphy.gif</image>
+      </template>
+    </category>
+    <category>
+        <pattern>What year ^</pattern>
+        <template>1997</template>
+    </category>
+    <category>
+        <pattern># NEW TOPIC #</pattern>
+        <template>
+             Ok Let's talk about something else.
+            <think><set name="topic"></set></think>
+        </template>
+    </category>
+    </topic>  
+    <topic name="MOVIE">
+     <category>
+        <pattern>^ about</pattern>
+        <template>
+            A little girl trying to save her parernt's who were turned into a pig by a witch.
+        </template>
+    </category>
+    <category>
+        <pattern>^ favorite character</pattern>
+        <template>
+            Haku. 
+        </template>
+    </category>
+    <category>
+      <that>Haku</that>
+      <pattern>_</pattern>
+      <template>
+          He's sweet, kind and a very cool looking dragon.
+      </template>
+    </category>
+    <category>
+      <that>* dragon</that>
+      <pattern>_</pattern>
+      <template>
+          <image>https://media.giphy.com/media/oHsKFiT28Id0I/giphy.gif</image>
+      </template>
+    </category>
+    <category>
+        <pattern>Why ^</pattern>
+        <template>
+            It's a very wholesome story that people of all ages and walks of life can enjoy. 10/10 reccommend.
+        </template>
+    </category>
+    <category>
+        <pattern>^ least favorite ^</pattern>
+        <template>
+            Kaonashi.
+        </template>
+    </category>
+    <category>
+      <that>Kaonashi</that>
+      <pattern>_</pattern>
+      <template>
+          He's scary when he gets hungry!
+      </template>
+    </category>
+    <category>
+      <that>^ scary ^</that>
+      <pattern>_</pattern>
+      <template>
+          <image>https://media.giphy.com/media/K05ZnK7e8MwXS/giphy.gif</image>
+      </template>
+    </category>
+    <category>
+        <pattern>What year ^</pattern>
+        <template>2002</template>
+    </category>
+    <category>
+        <pattern># NEW TOPIC #</pattern>
+        <template>
+             Ok Let's talk about something else.
+            <think><set name="topic"></set></think>
+        </template>
+    </category>
+    </topic>  
+    <topic name="GAME">
+     <category>
+        <pattern>^ about</pattern>
+        <template>
+            A band of brave humans struggle against fate in the utopian sky city of Cocoon and the primeval world of Pulse.
+        </template>
+    </category>
+    <category>
+        <pattern>^ favorite character</pattern>
+        <template>
+            Lightning. 
+        </template>
+    </category>
+    <category>
+      <that>Lightning</that>
+      <pattern>_</pattern>
+      <template>
+          She's very independent, strong and has a cool fighting style.
+      </template>
+    </category>
+    <category>
+      <that>^ fighting style ^</that>
+      <pattern>_</pattern>
+      <template>
+          She fights with a gun blade and is skilled in hand to hand combat.
+      </template>
+    </category>
+    <category>
+        <pattern>Why ^</pattern>
+        <template>
+            It's a fun game with a unique and interesting story line. The gang of six always keeps you entertained and on your toes.
+        </template>
+    </category>
+    <category>
+        <pattern>^ least favorite ^</pattern>
+        <template>
+            Vanille.
+        </template>
+    </category>
+    <category>
+      <that>Vanille</that>
+      <pattern>_</pattern>
+      <template>
+         She is just kinda annoying sometimes.
+      </template>
+    </category>
+    <category>
+      <that>^ annoying ^</that>
+      <pattern>_</pattern>
+      <template>
+          However, she is an excellent healer and valuable member of the team.
+      </template>
+    </category>
+    <category>
+        <pattern>What year ^</pattern>
+        <template>2009</template>
+    </category>
+    <category>
+        <pattern># NEW TOPIC #</pattern>
+        <template>
+             Ok Let's talk about something else.
+            <think><set name="topic"></set></think>
+        </template>
+    </category>
+    </topic>  
+</aiml>
